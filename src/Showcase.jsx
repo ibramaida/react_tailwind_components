@@ -1,7 +1,6 @@
 import { useState } from "react";
 
 import { ButtonOne, ButtonTwo, MenuOne } from "./components";
-// import { components } from "./components";
 
 const Showcase = () => {
   const [activeMenu, setActiveMenu] = useState(null);
