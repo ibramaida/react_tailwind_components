@@ -1,27 +1,18 @@
 import { useState } from "react";
 
-const ComponentShowcase = () => {
+import { ButtonOne, ButtonTwo, MenuOne } from "./components";
+// import { components } from "./components";
+
+const Showcase = () => {
   const [activeMenu, setActiveMenu] = useState(null);
   const [selectedComponent, setSelectedComponent] = useState(null);
-
-  // Sample components
-  const ButtonOne = () => (
-    <button className="px-4 py-2 bg-teal-500 text-white rounded-lg hover:bg-teal-600 transition-colors">
-      Button One
-    </button>
-  );
-
-  const ButtonTwo = () => (
-    <button className="px-4 py-2 bg-teal-500 text-white rounded-lg hover:bg-teal-600 transition-colors">
-      Button Two
-    </button>
-  );
 
   const components = {
     buttons: [
       { name: "Button One", component: <ButtonOne /> },
       { name: "Button Two", component: <ButtonTwo /> },
     ],
+    menus: [{ name: "Menu One", component: <MenuOne /> }],
     // Add more component groups as needed
   };
 
@@ -75,4 +66,4 @@ const ComponentShowcase = () => {
   );
 };
 
-export default ComponentShowcase;
+export default Showcase;
