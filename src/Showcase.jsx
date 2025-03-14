@@ -1,6 +1,13 @@
 import { useState } from "react";
+import "boxicons";
 
-import { ButtonOne, ButtonTwo, MenuOne } from "./components";
+import {
+  ButtonOne,
+  ButtonTwo,
+  ButtonFill,
+  MenuOne,
+  GlassyButton,
+} from "./components";
 
 const Showcase = () => {
   const [activeMenu, setActiveMenu] = useState(null);
@@ -10,6 +17,8 @@ const Showcase = () => {
     buttons: [
       { name: "Button One", component: <ButtonOne /> },
       { name: "Button Two", component: <ButtonTwo /> },
+      { name: "Button Fill", component: <ButtonFill /> },
+      { name: "Button Glassy", component: <GlassyButton /> },
     ],
     menus: [{ name: "Menu One", component: <MenuOne /> }],
     // Add more component groups as needed
@@ -23,14 +32,18 @@ const Showcase = () => {
           {Object.entries(components).map(([groupName, items]) => (
             <div key={groupName} className="relative">
               <button
-                className="text-white px-4 py-2 w-full text-left hover:bg-teal-600 rounded-md flex justify-between items-center"
+                className="text-white px-4 py-2 leading-tight w-full text-left hover:bg-teal-600 rounded-md flex justify-between items-baseline"
                 onClick={() =>
                   setActiveMenu(activeMenu === groupName ? null : groupName)
                 }
               >
                 {groupName.charAt(0).toUpperCase() + groupName.slice(1)}
-                <span className="ml-2">
-                  {activeMenu === groupName ? "▼" : "►"}
+                <span className="text-[10px] ml-2 md:m-0 md:text-[12px] ">
+                  {activeMenu === groupName ? (
+                    <i className="bx bxs-right-arrow"></i>
+                  ) : (
+                    <i className="bx bxs-down-arrow"></i>
+                  )}
                 </span>
               </button>
               {activeMenu === groupName && (
