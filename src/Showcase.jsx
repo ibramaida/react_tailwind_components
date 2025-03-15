@@ -1,13 +1,7 @@
 import { useState } from "react";
 import "boxicons";
 
-import {
-  ButtonOne,
-  ButtonTwo,
-  ButtonFill,
-  MenuOne,
-  GlassyButton,
-} from "./components";
+import { ButtonFill, MenuOne, GlassyButton } from "./components";
 
 const Showcase = () => {
   const [activeMenu, setActiveMenu] = useState(null);
@@ -15,8 +9,6 @@ const Showcase = () => {
 
   const components = {
     buttons: [
-      { name: "Button One", component: <ButtonOne /> },
-      { name: "Button Two", component: <ButtonTwo /> },
       { name: "Button Fill", component: <ButtonFill /> },
       { name: "Button Glassy", component: <GlassyButton /> },
     ],
@@ -28,6 +20,9 @@ const Showcase = () => {
     <div className="min-h-screen flex flex-col md:flex-row">
       {/* Header/Navigation */}
       <nav className="bg-teal-500 md:w-64 md:h-screen md:overflow-y-auto">
+        <h1 className="text-2xl text-slate-700 font-bold p-4">
+          React Components
+        </h1>
         <div className="flex flex-row md:flex-col p-4 space-y-0 md:space-y-2 space-x-2 md:space-x-0">
           {Object.entries(components).map(([groupName, items]) => (
             <div key={groupName} className="relative">
