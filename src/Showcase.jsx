@@ -1,7 +1,13 @@
 import { useState } from "react";
 import "boxicons";
 
-import { ButtonFill, MenuOne, GlassyButton } from "./components";
+import {
+  ButtonFill,
+  MenuOne,
+  GlassyButton,
+  CardImage,
+  SliderIndicators,
+} from "./components";
 
 const Showcase = () => {
   const [activeMenu, setActiveMenu] = useState(null);
@@ -13,6 +19,10 @@ const Showcase = () => {
       { name: "Button Glassy", component: <GlassyButton /> },
     ],
     menus: [{ name: "Menu One", component: <MenuOne /> }],
+    cards: [{ name: "Card with Image", component: <CardImage /> }],
+    sliders: [
+      { name: "Slider with Indicators", component: <SliderIndicators /> },
+    ],
     // Add more component groups as needed
   };
 
@@ -23,11 +33,11 @@ const Showcase = () => {
         <h1 className="text-2xl text-slate-700 font-bold p-4">
           React Components
         </h1>
-        <div className="flex flex-row md:flex-col p-4 space-y-0 md:space-y-2 space-x-2 md:space-x-0">
+        <div className="flex flex-row overflow-x-auto md:flex-col p-4 space-y-0 md:space-y-2 space-x-2 md:space-x-0">
           {Object.entries(components).map(([groupName, items]) => (
             <div key={groupName} className="relative">
               <button
-                className="text-white px-4 py-2 leading-tight w-full text-left hover:bg-teal-600 rounded-md flex justify-between items-baseline"
+                className="text-white p-2 leading-tight w-full text-left hover:bg-teal-600 rounded-md flex justify-between items-baseline"
                 onClick={() =>
                   setActiveMenu(activeMenu === groupName ? null : groupName)
                 }
@@ -42,11 +52,11 @@ const Showcase = () => {
                 </span>
               </button>
               {activeMenu === groupName && (
-                <div className="ml-4 md:ml-2 mt-1 space-y-1">
+                <div className=" md:ml-2 mt-1 space-y-1">
                   {items.map((item, index) => (
                     <button
                       key={index}
-                      className="text-white block px-4 py-2 w-full text-left hover:bg-teal-600 rounded-md"
+                      className="text-white block px-4 py-2 w-full text-left text-nowrap hover:bg-teal-600 rounded-md"
                       onClick={() => setSelectedComponent(item.component)}
                     >
                       {item.name}
