@@ -4,7 +4,7 @@ import laptop3 from "./laptop3.webp";
 import laptop4 from "./laptop4.jpg";
 import laptop5 from "./laptop5.jpg";
 
-export const laptopImages = [
+export const slides = [
   {
     id: 1,
     name: "Laptop 1",

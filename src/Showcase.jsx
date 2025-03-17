@@ -5,8 +5,8 @@ import {
   ButtonFill,
   MenuOne,
   GlassyButton,
-  CardImage,
   SliderIndicators,
+  CardImageExample,
 } from "./components";
 
 const Showcase = () => {
@@ -19,7 +19,7 @@ const Showcase = () => {
       { name: "Button Glassy", component: <GlassyButton /> },
     ],
     menus: [{ name: "Menu One", component: <MenuOne /> }],
-    cards: [{ name: "Card with Image", component: <CardImage /> }],
+    cards: [{ name: "Card with Image", component: <CardImageExample /> }],
     sliders: [
       { name: "Slider with Indicators", component: <SliderIndicators /> },
     ],
@@ -29,7 +29,7 @@ const Showcase = () => {
   return (
     <div className="min-h-screen flex flex-col md:flex-row">
       {/* Header/Navigation */}
-      <nav className="bg-teal-500 md:w-64 md:h-screen md:overflow-y-auto">
+      <nav className="bg-teal-500 shrink-0 md:w-64 md:h-screen md:overflow-y-auto">
         <h1 className="text-2xl text-slate-700 font-bold p-4">
           React Components
         </h1>
@@ -37,7 +37,7 @@ const Showcase = () => {
           {Object.entries(components).map(([groupName, items]) => (
             <div key={groupName} className="relative">
               <button
-                className="text-white p-2 leading-tight w-full text-left hover:bg-teal-600 rounded-md flex justify-between items-baseline"
+                className="text-white p-2 leading-tight w-full text-left cursor-pointer hover:bg-teal-600 rounded-md flex justify-between items-baseline"
                 onClick={() =>
                   setActiveMenu(activeMenu === groupName ? null : groupName)
                 }

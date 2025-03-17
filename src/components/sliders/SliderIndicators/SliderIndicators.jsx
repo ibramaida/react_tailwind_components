@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-import { laptopImages } from "../../../assets/images/laptops/laptops";
+import { slides } from "../../../assets/images/laptops/laptops";
 import { CardImage } from "../../cards";
 
 export const SliderIndicators = () => {
@@ -13,13 +13,13 @@ export const SliderIndicators = () => {
       const isMediumScreen = window.matchMedia("(min-width: 768px)").matches;
       const newSlidesPerView = isMediumScreen ? 2 : 1;
       setSlidesPerView(newSlidesPerView);
-      setMaxSlide(Math.max(laptopImages.length - newSlidesPerView, 0));
+      setMaxSlide(Math.max(slides.length - newSlidesPerView, 0));
     };
 
     calculateResponsive();
     window.addEventListener("resize", calculateResponsive);
     return () => window.removeEventListener("resize", calculateResponsive);
-  }, [laptopImages.length]);
+  }, [slides.length]);
 
   useEffect(() => {
     setCurrentSlide((prev) => Math.min(prev, maxSlide));
@@ -36,16 +36,16 @@ export const SliderIndicators = () => {
   const translateValue = `-${currentSlide * (100 / slidesPerView)}%`;
 
   return (
-    <div className="relative w-full py-10 overflow-hidden">
+    <div className="relative w-full py-12 overflow-hidden">
       {/* Slides Container */}
       <div
-        className="flex transition-transform duration-300 ease-out"
+        className="@container flex transition-transform duration-300 ease-out"
         style={{ transform: `translateX(${translateValue})` }}
       >
-        {laptopImages.map((slide, index) => (
+        {slides.map((slide, index) => (
           <div
             key={index}
-            className="min-w-full md:min-w-[50%] flex items-center justify-center p-4"
+            className="min-w-full @md:min-w-[50%] flex items-center justify-center p-4"
           >
             <CardImage slide={slide} />
           </div>
@@ -53,7 +53,7 @@ export const SliderIndicators = () => {
       </div>
 
       {/* Controls Container */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 flex items-center gap-4">
+      <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex items-center gap-4">
         {/* Previous Button */}
         <button
           onClick={prevSlide}
@@ -81,7 +81,7 @@ export const SliderIndicators = () => {
             <button
               key={index}
               onClick={() => setCurrentSlide(index)}
-              className={`w-3 h-3 rounded-full transition-all ${
+              className={`w-3 h-3 rounded-full transition-all cursor-pointer ${
                 index === currentSlide ? "bg-white w-6" : "bg-white/30"
               }`}
             />
@@ -92,7 +92,7 @@ export const SliderIndicators = () => {
         <button
           onClick={nextSlide}
           disabled={currentSlide === maxSlide}
-          className="p-2 rounded-full bg-white/20 hover:bg-white/30 disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+          className="p-2 rounded-full bg-white/20 cursor-pointer hover:bg-white/30 disabled:opacity-30 disabled:cursor-not-allowed transition-all"
         >
           <svg
             className="w-6 h-6 text-white"
