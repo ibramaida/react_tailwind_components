@@ -7,11 +7,15 @@ import {
   GlassyButton,
   SliderIndicators,
   CardImageExample,
+  CardBorderAnimation,
 } from "./components";
 
 const Showcase = () => {
   const [activeMenu, setActiveMenu] = useState(null);
   const [selectedComponent, setSelectedComponent] = useState(null);
+  const [selectedItem, setSelectedItem] = useState(null);
+
+  // console.log(activeMenu, selectedComponent);
 
   const components = {
     buttons: [
@@ -19,7 +23,10 @@ const Showcase = () => {
       { name: "Button Glassy", component: <GlassyButton /> },
     ],
     menus: [{ name: "Menu One", component: <MenuOne /> }],
-    cards: [{ name: "Card with Image", component: <CardImageExample /> }],
+    cards: [
+      { name: "Card with Image", component: <CardImageExample /> },
+      { name: "Card Border Animation", component: <CardBorderAnimation /> },
+    ],
     sliders: [
       { name: "Slider with Indicators", component: <SliderIndicators /> },
     ],
@@ -56,8 +63,13 @@ const Showcase = () => {
                   {items.map((item, index) => (
                     <button
                       key={index}
-                      className="text-white block px-4 py-2 w-full text-left text-nowrap hover:bg-teal-600 rounded-md"
-                      onClick={() => setSelectedComponent(item.component)}
+                      className={`text-white block px-4 py-2 w-full text-left text-nowrap hover:bg-teal-600 active:scale-95 rounded-md cursor-pointer ${
+                        selectedItem === item.name ? "bg-teal-600" : ""
+                      }`}
+                      onClick={() => {
+                        setSelectedComponent(item.component);
+                        setSelectedItem(item.name);
+                      }}
                     >
                       {item.name}
                     </button>
