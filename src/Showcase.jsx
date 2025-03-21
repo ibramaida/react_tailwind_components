@@ -8,20 +8,30 @@ import {
   SliderIndicators,
   CardImageExample,
   CardBorderAnimation,
+  NavbarHover,
 } from "./components";
 
 const Showcase = () => {
   const [activeMenu, setActiveMenu] = useState(null);
   const [selectedComponent, setSelectedComponent] = useState(null);
   const [selectedItem, setSelectedItem] = useState(null);
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(() => {
+    const theme = localStorage.getItem("theme");
+    if (theme) {
+      return theme === "dark";
+    } else {
+      return window.matchMedia("(prefers-color-scheme: dark)").matches;
+    }
+  });
 
   // console.log(activeMenu, selectedComponent);
   useEffect(() => {
     if (darkMode) {
       document.documentElement.classList.add("dark");
+      localStorage.setItem("theme", "dark");
     } else {
       document.documentElement.classList.remove("dark");
+      localStorage.setItem("theme", "light");
     }
   }, [darkMode]);
 
@@ -42,6 +52,7 @@ const Showcase = () => {
     sliders: [
       { name: "Slider with Indicators", component: <SliderIndicators /> },
     ],
+    navbars: [{ name: "Navbar Hover Effect", component: <NavbarHover /> }],
     // Add more component groups as needed
   };
 
