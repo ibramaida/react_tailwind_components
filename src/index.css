@@ -1,1 +1,19 @@
 @import "tailwindcss";
+
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@theme {
+  --animate-rotate-gradient: rotate-gradient 4s linear infinite;
+
+  @keyframes rotate-gradient {
+    to {
+      --angle: 360deg;
+    }
+  }
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
