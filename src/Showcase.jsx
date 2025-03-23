@@ -113,7 +113,7 @@ const Showcase = () => {
       </nav>
 
       {/* Main Showcase Area */}
-      <main className="bg-slate-200 dark:bg-slate-900 flex-1 min-h-[calc(100vh-56px)] md:min-h-screen flex items-center justify-center transition-colors duration-300">
+      <main className="relative bg-slate-200 dark:bg-slate-900 flex-1 min-h-[calc(100vh-56px)] md:min-h-screen flex items-center justify-center transition-colors duration-300">
         <div className="p-4 w-full max-w-4xl">
           {selectedComponent || (
             <p className="text-slate-900 dark:text-slate-100 text-center text-lg">
