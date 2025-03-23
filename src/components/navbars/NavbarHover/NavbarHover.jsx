@@ -204,7 +204,7 @@ const Link = ({ item, activeItem, onHover }) => {
 
 const Search = () => {
   return (
-    <div className="bg-slate-200 flex items-center gap-2 p-2 rounded-lg ">
+    <div className="bg-slate-200 flex items-center gap-2 p-2 rounded-lg absolute top-2 right-4 md:block">
       <i className="bx bx-search opacity-50"></i>
       <input type="text" placeholder="Search..." />
     </div>
@@ -268,7 +268,7 @@ export const NavbarHover = () => {
   }, [focusedIndex]);
 
   return (
-    <nav className="flex items-center justify-between fixed top-0 md:top-0 right-0 w-full md:w-[calc(100%-256px)] bg-white px-4 py-2 @container">
+    <nav className="@lg:flex @lg:items-center @lg:justify-between fixed top-0 md:top-0 right-0 w-full md:w-[calc(100%-256px)] bg-white px-4 py-2 @container">
       <div className="shrink-0 flex items-center mr-2">
         <img
           className="size-10 rounded-full"
