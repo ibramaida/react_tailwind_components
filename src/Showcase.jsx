@@ -9,9 +9,20 @@ import {
   CardImageExample,
   CardBorderAnimation,
   NavbarHover,
+  Select,
 } from "./components";
 
+const options = [
+  { value: "option1", label: "Option 1" },
+  { value: "option2", label: "Option 2" },
+  { value: "option3", label: "Option 3" },
+];
+
 const Showcase = () => {
+  const [value, setValue] = useState(options[0]);
+
+  // console.log(value);
+
   const [activeMenu, setActiveMenu] = useState(null);
   const [selectedComponent, setSelectedComponent] = useState(null);
   const [selectedItem, setSelectedItem] = useState(null);
@@ -53,6 +64,22 @@ const Showcase = () => {
       { name: "Slider with Indicators", component: <SliderIndicators /> },
     ],
     navbars: [{ name: "Navbar Hover Effect", component: <NavbarHover /> }],
+    dropdowns: [
+      {
+        name: "Select",
+        component: (
+          <Select
+            options={options}
+            value={value}
+            onChange={(option) => {
+              console.log("onChange triggered");
+
+              setValue(option);
+            }}
+          />
+        ),
+      },
+    ],
     // Add more component groups as needed
   };
 
