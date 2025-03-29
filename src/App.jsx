@@ -13,6 +13,10 @@ const options = [
 
 const App = () => {
   const [value, setValue] = useState(options[0]);
+  const [multipleValue, setMultipleValue] = useState([]);
+
+  console.log(multipleValue);
+
   return (
     <>
       <Showcase />
@@ -24,6 +28,16 @@ const App = () => {
             console.log("onChange triggered");
 
             setValue(option);
+          }}
+        />
+        <Select
+          multiple
+          options={options}
+          value={multipleValue}
+          onChange={(option) => {
+            console.log("onChange triggered");
+
+            setMultipleValue(option);
           }}
         />
       </div>
