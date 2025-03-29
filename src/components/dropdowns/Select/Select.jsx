@@ -12,7 +12,7 @@ export const Select = ({ options, value, onChange }) => {
   }
 
   function selectOption(option) {
-    onChange(option);
+    if (option !== value) onChange(option);
   }
 
   function isOptionSelected(option) {
